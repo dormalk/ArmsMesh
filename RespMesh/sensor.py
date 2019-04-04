@@ -9,18 +9,19 @@ class GPS:
 		self.ser = serial.Serial("/dev/ttyAMA0",9600, timeout = 0.5)
 
     def collect(self):
-		try:
-			while True:
-				sentence = self.ser.readline()			
-				if sentence == "": break	
-				if sentence.find('GGA') > 0:		
-					lat = float(sentence.split(',')[2])/100
-					lon = float(sentence.split(',')[4])/100
-					value = 'G:'+str(lon)+':'+str(lat)
-					break
-		except:
-			value = 'G:X:0.0Y:0.0'
-		return value
+      try:
+        while True:
+          sentence = self.ser.readline()			
+          if sentence == "": break	
+          if sentence.find('GGA') > 0:		
+            lat = float(sentence.split(',')[2])/100
+            lon = float(sentence.split(',')[4])/100
+            value = 'G:'+str(lon)+':'+str(lat)
+            break
+      except ValueError as e:
+        print str(e)
+        value = 'G:X:0.0Y:0.0'
+      return value
 
 class ACC:
     def __init__(self):
@@ -60,14 +61,14 @@ class EMARG:
         GPIO.add_event_detect(12,GPIO.RISING,callback=self.listen) # Setup event on pin 12 rising edge
     
     def collect(self):
-		result = 'E:'
-		result += str(self.value)	
-		return result
+		  result = 'E:'
+		  result += str(self.value)	
+		  return result
 
     def listen(self,channel):
-		if self.value != True:
-			self.value = True
-			time.sleep(60)
-			self.value = False
+      if self.value != True:
+        self.value = True
+        time.sleep(60)
+        self.value = False
 		
 

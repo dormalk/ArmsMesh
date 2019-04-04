@@ -15,6 +15,7 @@ class RFBridge:
                 self.redisTool = redisTool
 
 	def begin(self):
+                try:
                 while 1:                                
                         if(ser.in_waiting > 0):
                                 line = self.read()
@@ -30,8 +31,10 @@ class RFBridge:
                                         message.set_time(self.read()[12:])
                                         message.set_src(src = self.read()[6:])
                                         message.set_data(self.read()[7:])
-#                                        print message.get_message()
+                                        # print message.get_message()
                                         # message.get_message() push to redis
+                except ValueError as e:
+                        print str(e)
 
 	def read(self):
                 return ser.readline()
