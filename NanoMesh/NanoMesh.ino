@@ -28,7 +28,7 @@ void loop() {
         while(!(Serial.available()>0)){};
           Serial.readStringUntil('\n').substring(2).toCharArray(payload.data,sizeof(payload.data));
         while(!(Serial.available()>0)){};
-            payload.Msg_Id = (uint8_t)Serial.readStringUntil('\n').substring(2).toInt();
+            payload.Msg_Id = (uint32_t)Serial.readStringUntil('\n').substring(2).toInt();
         payload.src = NodeId;
         sendMessage(payload);
     }
@@ -40,7 +40,7 @@ void loop() {
     }
   
   }
-  testFunction();
+  //testFunction();
   delay(100);
 };
 
