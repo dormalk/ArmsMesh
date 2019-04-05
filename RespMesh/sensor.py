@@ -9,19 +9,19 @@ class GPS:
 		self.ser = serial.Serial("/dev/ttyAMA0",9600, timeout = 0.5)
 
     def collect(self):
-      try:
-        while True:
-          sentence = self.ser.readline()			
-          if sentence == "": break	
-          if sentence.find('GGA') > 0:		
-            lat = float(sentence.split(',')[2])/100
-            lon = float(sentence.split(',')[4])/100
-            value = 'G:'+str(lon)+':'+str(lat)
-            break
-      except ValueError as e:
-        print str(e)
-        value = 'G:X:0.0Y:0.0'
-      return value
+        try:
+            while True:
+                sentence = self.ser.readline()			
+                if sentence == "": break	
+                if sentence.find('GGA') > 0:
+                    lat = float(sentence.split(',')[2])/100
+                    lon = float(sentence.split(',')[4])/100
+                    value = 'G:'+str(lon)+':'+str(lat)
+                    break
+        except ValueError as e:
+            print str(e)
+            value = 'G:0.0:0.0'
+        return value
 
 class ACC:
     def __init__(self):

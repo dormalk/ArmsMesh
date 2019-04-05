@@ -16,23 +16,23 @@ class RFBridge:
 
 	def begin(self):
                 try:
-                while 1:                                
-                        if(ser.in_waiting > 0):
-                                line = self.read()
-                                #line is 1 line from the recived message and not all the message
-                                #here we need to check which tag we read and build full message and push it to redis
-                                #we can be sure that the message is for current RespB coz arduino handle this issue
-                                print line
-                                if line == '<START>':
-                                        self.set_nodeid(self.nodeid)  
-                                if '<NEW_MSG>' in line:
-                                        message = Message()
-                                        message.set_msg_id(self.read()[9:])
-                                        message.set_time(self.read()[12:])
-                                        message.set_src(src = self.read()[6:])
-                                        message.set_data(self.read()[7:])
-                                        # print message.get_message()
-                                        # message.get_message() push to redis
+                        while 1:                                
+                                if(ser.in_waiting > 0):
+                                        line = self.read()
+                                        #line is 1 line from the recived message and not all the message
+                                        #here we need to check which tag we read and build full message and push it to redis
+                                        #we can be sure that the message is for current RespB coz arduino handle this issue
+                                        print line
+                                        if line == '<START>':
+                                                self.set_nodeid(self.nodeid)  
+                                        if '<NEW_MSG>' in line:
+                                                message = Message()
+                                                message.set_msg_id(self.read()[9:])
+                                                message.set_time(self.read()[12:])
+                                                message.set_src(src = self.read()[6:])
+                                                message.set_data(self.read()[7:])
+                                                # print message.get_message()
+                                                # message.get_message() push to redis
                 except ValueError as e:
                         print str(e)
 
@@ -40,6 +40,7 @@ class RFBridge:
                 return ser.readline()
 
 	def write(self,message):
+                        print str(message)
                         ser.writelines('<SEND>'+'\n'+str(message)+'\n')
 
         def set_nodeid(self,nodeid):

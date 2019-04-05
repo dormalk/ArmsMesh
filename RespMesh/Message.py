@@ -14,7 +14,7 @@ class Message:
         if self.data is not None:
             msg += 'm:' + self.data + '\n'
         if self.time is not None:
-            msg += 't:' + self.time + '\n'
+            msg += 't:' + str(self.time) + '\n'
         return msg
     
     def set_time(self,time):
