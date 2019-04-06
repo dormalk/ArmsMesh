@@ -4,15 +4,17 @@ import time
 import platform
 from Message import Message
 from redisConnection import RedisTools
+from config import Config
 
 if platform.system() == 'Windows':
         from sensorTest import GPS,ACC,PULSE,EMARG
 else:
         from sensor import GPS,ACC,PULSE,EMARG
 
-nodeid = 12
+
+conf = Config()
 redisTool = RedisTools()
-bridge = RFBridge(nodeid,redisTool)
+bridge = RFBridge(conf.node_id,redisTool)
 
 sensors = []
 sensors.append(GPS())
@@ -40,7 +42,7 @@ def main():
         t = threading.Thread(name = 'rfbridge',target=bridge.begin)
         t.start()
         time.sleep(2)
-        bridge.set_nodeid(80)
+        bridge.set_nodeid(conf.node_id)
         run()
 
 if __name__ == "__main__":
