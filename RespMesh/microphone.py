@@ -1,32 +1,38 @@
-import os,subprocess,signal
-import threading
-import time
-import serial
+import pyaudio
+import wave
 
+CHUNK = 1024
+FORMAT = pyaudio.paInt16
+CHANNELS = 2
+RATE = 2000
+RECORD_SECONDS = 4
+WAVE_OUTPUT_FILENAME = "voice.mp3"
 
-#proc = subprocess.Popen(['bash','./recorder.sh'])
-#time.sleep(3)
+p = pyaudio.PyAudio()
 
-#proc.kill()
-#proc = subprocess.Popen(['sudo','./usbreset','/dev/bus/usb/001/011'])
-#time.sleep(2)
-#proc.send_signal(signal.SIGKILL)
+stream = p.open(format=FORMAT,
+                channels=CHANNELS,
+                rate=RATE,
+                input=True,
+                frames_per_buffer=CHUNK)
 
-COM = '/dev/ttyUSB0'
-ser = serial.Serial(COM,115200)
+print("* recording")
 
-with open('./media/test.wav','rb') as f:
-	ser.writelines('<AUDIO>\n')
-	byte = f.read(22)
-	ser.writelines(byte)
-	while byte != "":
-		if (ser.in_waiting > 0):
-			print ser.readline()
-		ser.writelines('<AUDIO>\n')
-		byte = f.read(22)
-		ser.writelines(byte)
+frames = []
 
+for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+    data = stream.read(CHUNK)
+    frames.append(data)
 
+print("* done recording")
 
+stream.stop_stream()
+stream.close()
+p.terminate()
 
-
+wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
+wf.setnchannels(CHANNELS)
+wf.setsampwidth(p.get_sample_size(FORMAT))
+wf.setframerate(RATE)
+wf.writeframes(b''.join(frames))
+wf.close()
