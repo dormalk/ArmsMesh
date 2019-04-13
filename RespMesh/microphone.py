@@ -1,38 +1,42 @@
 import pyaudio
 import wave
+import os
 
-CHUNK = 1024
-FORMAT = pyaudio.paInt16
-CHANNELS = 2
-RATE = 2000
-RECORD_SECONDS = 4
-WAVE_OUTPUT_FILENAME = "voice.mp3"
+#The following code comes from markjay4k as referenced below
+form_1 = pyaudio.paInt16
+chans=1
+samp_rate = 44100
+chunk = 4096
+record_secs = 1     #record time
+dev_index = 2
+wav_output_filename = 'test1.wav'
 
-p = pyaudio.PyAudio()
 
-stream = p.open(format=FORMAT,
-                channels=CHANNELS,
-                rate=RATE,
-                input=True,
-                frames_per_buffer=CHUNK)
+audio = pyaudio.PyAudio()
 
-print("* recording")
+#setup audio input stream
+stream=audio.open(format = form_1,rate=samp_rate,channels=chans, input_device_index = dev_index, input=True, frames_per_buffer=chunk)
+print("recording")
+frames=[]
 
-frames = []
-
-for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
-    data = stream.read(CHUNK)
+for ii in range(0,int((samp_rate/chunk)*record_secs)):
+    data=stream.read(chunk,exception_on_overflow = False)
     frames.append(data)
 
-print("* done recording")
+print("finished recording")
 
 stream.stop_stream()
 stream.close()
-p.terminate()
+audio.terminate()
 
-wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
-wf.setnchannels(CHANNELS)
-wf.setsampwidth(p.get_sample_size(FORMAT))
-wf.setframerate(RATE)
-wf.writeframes(b''.join(frames))
-wf.close()
+#creates wave file with audio read in
+#Code is from the wave file audio tutorial as referenced below
+wavefile=wave.open(wav_output_filename,'wb')
+wavefile.setnchannels(chans)
+wavefile.setsampwidth(audio.get_sample_size(form_1))
+wavefile.setframerate(samp_rate)
+wavefile.writeframes(b''.join(frames))
+wavefile.close()
+
+#plays the audio file
+os.system("aplay test1.wav")
