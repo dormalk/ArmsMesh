@@ -25,26 +25,32 @@ bridge = RFBridge(conf.node_id,redisTool)
 #ziped = zipfile.ZipFile('./media/test.zip','w');
 #ziped.write('./media/test.mp3', compress_type=zipfile.ZIP_DEFLATED);
 #ziped.close()
-
+readSize = 22
 
 COM = '/dev/ttyUSB0'
-ser = serial.Serial(COM,115200)
+ser = serial.Serial(COM,115200,serial.EIGHTBITS,serial.PARITY_NONE, serial.STOPBITS_ONE)
 
 
 t = threading.Thread(name = 'just',target=bridge.begin)
 t.start()
-
-with open('./media/test.tar.gz','rb') as f:
+i = 0
+with open('./media/test1.wav','rb') as f:
 	print "Running..."
 	ser.writelines('<AUDIO>\n')
 	time.sleep(1);
-	byte = f.read(100)
-	ser.writelines(byte)
+	print i
+	i = i + 1
+	byte = f.read(readSize)
+	ser.write(byte)
+	time.sleep(0.001)
 	while byte != "":
-		byte = f.read(100)
-		ser.writelines(byte)
-		time.sleep(0.1)
+		byte = f.read(readSize)
+		print i
+		i = i + 1
+		ser.write(byte)
+		time.sleep(0.001)
 
+	ser.write("<END>")
 
 
 

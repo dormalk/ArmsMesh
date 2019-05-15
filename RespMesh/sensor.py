@@ -11,8 +11,9 @@ class GPS:
     def collect(self):
         try:
             while True:
-                sentence = self.ser.readline()			
-                if sentence == "": break	
+                sentence = self.ser.readline()
+                if sentence == "":
+                    break
                 if sentence.find('GGA') > 0:
                     lat = float(sentence.split(',')[2])/100
                     lon = float(sentence.split(',')[4])/100

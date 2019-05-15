@@ -6,6 +6,7 @@ from Message import Message
 from redisConnection import RedisTools
 from config import Config
 
+
 if platform.system() == 'Windows':
         from sensorTest import GPS,ACC,PULSE,EMARG
 else:
@@ -33,6 +34,7 @@ def run():
                                 message.set_data(sense.collect())
                                 message.set_dest(0)
                                 msg = message.get_message()
+                                #print msg
                                 bridge.write(msg)
                                 #Here push msg to redis
                                 time.sleep(1)
