@@ -9,6 +9,7 @@ class GPS:
 		self.ser = serial.Serial("/dev/ttyAMA0",9600, timeout = 0.5)
 
     def collect(self):
+        value = 'G:0.0:0.0'
         try:
             while True:
                 sentence = self.ser.readline()
@@ -19,9 +20,8 @@ class GPS:
                     lon = float(sentence.split(',')[4])/100
                     value = 'G:'+str(lon)+':'+str(lat)
                     break
-        except ValueError as e:
+        except (ValueError, IndexError, serial.SerialException) as e:
             print str(e)
-            value = 'G:0.0:0.0'
         return value
 
 class ACC:
@@ -67,9 +67,9 @@ class EMARG:
 		  return result
 
     def listen(self,channel):
-      if self.value != True:
-        self.value = True
-        time.sleep(60)
-        self.value = False
+        if self.value != True:
+            self.value = True
+            time.sleep(60)
+            self.value = False
 		
 

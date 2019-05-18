@@ -34,7 +34,7 @@ def run():
                                 message.set_data(sense.collect())
                                 message.set_dest(0)
                                 msg = message.get_message()
-                                #print msg
+                                print msg
                                 bridge.write(msg)
                                 #Here push msg to redis
                                 time.sleep(1)
