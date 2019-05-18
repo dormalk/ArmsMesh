@@ -40,6 +40,7 @@ class RFBridge:
                                 try:
                                         if(self.ser.in_waiting > 0):
                                                 line = self.read()
+                                                print line
                                                         #line is 1 line from the recived message and not all the message
                                                         #here we need to check which tag we read and build full message and push it to redis
                                                         #we can be sure that the message is for current RespB coz arduino handle this issue
@@ -70,17 +71,13 @@ class RFBridge:
                                                         time.sleep(0.5)
                                                         print str(e)
                                 except:
-                                        time.sleep(0.5)
                                         self.ser = serial.Serial(COM,115200)
-                                        print "global error"
 					
         def read(self):
                 return self.ser.readline()
 
         def write(self,message):
                 try:
-                        print self.isAudioTX
-                        print self.isAduioRX
                         if not self.isAudioTX and not self.isAduioRX:
                                 self.ser.writelines('<SEND>'+'\n'+str(message)+'\n')
                 except serial.serialutil.SerialException as e:
@@ -110,25 +107,33 @@ class RFBridge:
                         
         def recivedAudio(self):
                 self.isAduioRX = True
-                os.remove('./media/test.mp3')
+                try:
+                        os.remove('./media/test.mp3')
+                except:
+                        print "just error"
                 curr = 0
+                print "START"
                 with open('./media/test.mp3','ab') as f2:
                         while not (self.ser.in_waiting > 0):
                                 continue
                         f2.write(self.ser.read(22))
                         while True:
                                 if(self.ser.in_waiting > 0):
-                                        row = ser.readline()
+                                        row = self.ser.readline()
+                                        print "first"+row
                                         if "<AUDIO_DATA>" in row:
                                                 curr = time.time()
                                                 row = self.ser.read(22)
+                                                print "sec"+row
                                                 if "REC" in row:
                                                         self.ser.write("<END_AUDIO>")
                                                         break
                                                 f2.write(row)
-                                        if "<DATA>" in row and curr != 0:
+                                        if "<DATA>" in row:
                                                 self.ser.write("<END_AUDIO>")
                                                 break
-                playsound("./media/test.mp3")
-                time.sleep(1)
                 self.isAduioRX = False
+                #playsound("./media/test.mp3")
+                pi = "./media/test.mp3"
+                os.system("mpg123 "+pi)
+                time.sleep(1)
