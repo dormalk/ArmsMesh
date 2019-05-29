@@ -47,6 +47,10 @@ void loop() {
 void reciveMessage(){
   payload_t payload;
   radio.read(&payload,sizeof(payload_t));
+  Serial.println(payload.Msg_Id);
+Serial.println(payload.dest);
+Serial.println(payload.src);
+
   if(!msgIdQueue.isExist(payload.Msg_Id)){
     msgIdQueue.enQueue(payload.Msg_Id);    
     if(payload.dest%3 == 0 && payload.src != NodeId && NodeId%3 == 0){                                 //If it's for me - insert to PI
@@ -83,7 +87,6 @@ int msgId = 0;
 int count = 0;
 void testFunction(){
   if(millis()-testTimer > 1000){
-/*    
     testTimer = millis();
     payload_t payload;
     payload.Msg_Id = msgId++;
@@ -97,6 +100,7 @@ void testFunction(){
       strcpy(payload.data,"A:12.23,23.21,2.0");
     if(count%4 == 3)
       strcpy(payload.data,"F:False");
-    sendMessage(payload);*/
+      count++;
+    sendMessage(payload);
   }
 };
