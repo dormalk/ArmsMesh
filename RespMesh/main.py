@@ -5,7 +5,7 @@ import platform
 from Message import Message
 from redisConnection import RedisTools
 from config import Config
-
+from gyro import commander
 
 if platform.system() == 'Windows':
         from sensorTest import GPS,ACC,PULSE,EMARG
@@ -36,14 +36,21 @@ def run():
                                 msg = message.get_message()
                                 #print msg
                                 bridge.write(msg)
+                                time.sleep(1)
                                 #Here push msg to redis
                                 time.sleep(1)
-
+                                
 def main():
         print "Running..."
+                                        
         t = threading.Thread(name = 'rfbridge',target=bridge.begin)
         t.start()
         time.sleep(2)
+        if conf.node_id %3 == 0 :
+                               comand = commander()
+                               s= threading.Thread(name = 'commaderScreen',target=comand.start(1))
+
+        #s.start()
         bridge.set_nodeid(conf.node_id)
         run()
 

@@ -1,2 +1,2 @@
 class Config:
-	node_id = 0
+	node_id = 9

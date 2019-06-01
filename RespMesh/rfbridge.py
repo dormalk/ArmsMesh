@@ -48,13 +48,30 @@ class RFBridge:
                                                 if line == '<START>':
                                                         self.set_nodeid(self.nodeid)  
                                                 if '<NEW_MSG>' in line:
+                                                        line = line.replace(' ', '_')
+                                                        newMes,msgId,src,data,end= line.split(',', 5)
+                                                        print "MessageID :" +msgId   
+
+                                                        toTrash1,toTrash,msgId = msgId.split('_',3)
+                                                        toTrash,src = src.split('_',2)
+                                                        toTrash,data = data.split('_',2)
+
                                                         message = Message()
-                                                        message.set_msg_id(self.read()[9:])
-                                                        message.set_time(self.read()[12:])
-                                                        message.set_src(src = self.read()[6:])
-                                                        message.set_data(self.read()[7:])
-                                                        # print message.get_message()
-                                                                # message.get_message() push to redis
+                                                                                                            
+
+                                                        message.set_msg_id(msgId)
+                                                        message.set_time(time.time())
+                                                        message.set_dest(src)
+                                                        message.set_data(data)
+                                                        if 'G' in data :
+                                                                self.redisTool.pipeLpush(message.get_dest()+"_G",message.get_data())        
+                                                        if 'A' in data :
+                                                                self.redisTool.pipeLpush(message.get_dest()+"_A",message.get_data())
+                                                        if 'E' in data :
+                                                                self.redisTool.pipeLpush(message.get_dest()+"_E",message.get_data())
+                                                        if 'P' in data :
+                                                                self.redisTool.pipeLpush(message.get_dest()+ "_P",message.get_data())
+                                                        self.redisTool.pipeLpush(message.get_dest(),message.get_message())
                                                 if '<AUDIO_DATA>' in line:
                                                         self.recivedAudio()
                                                 

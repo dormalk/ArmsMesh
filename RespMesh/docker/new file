@@ -1,0 +1,26 @@
+sudo apt-get install apt-transport-https ca-certificates software-properties-common
+
+sudo curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
+
+sudo apt-key fingerprint 58118E89F3A912897C070ADBF76221572C52609D/etc/apt/trusted.gpg
+
+sudo add-apt-repository "deb https://apt.dockerproject.org/repo/raspbian-$ (lsb_release -cs) main "
+
+
+sudo apt install docker.io
+
+
+sudo usermod -aG docker dor
+
+newgrp docker
+
+
+sudo nano /etc/sysctl 
+
+ enter - > vm.overcommit_memory = 1
+
+
+docker run --name redis -d -p 127.0.0.1:6379:6379 --restart unless-stopped arm32v7/redis --appendonly yes --maxmemory 512mb --tcp-backlog 128
+
+
+sudo apt install redis-tools
