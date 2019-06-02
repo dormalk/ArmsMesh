@@ -11,7 +11,7 @@ from redisConnection import RedisTools
 class Magn():
 
 	def __init__(self):
-		print "init"
+		print ""
 	def getNorthDegree(self):
 		power_mgmt_1 = 0x6b
 		power_mgmt_2 = 0x1d
@@ -57,10 +57,12 @@ class commander( ):
 			meX = 32.0729653
 			meY = 34.8072157
 			r = RedisTools()
-			data = str(r.lpop(str(nodeId) + "_g"))
-			G,targetX,targetY = data.split(':',3)	
-		#targetX = 32.7996897
-		#targetY = 35.0517956
+			if r.llen(str(nodeId) + "_G") > 0 :
+				data = str(r.lpop(str(nodeId) + "_G"))
+				G,targetX,targetY = data.split(':',3)
+			else :			
+				targetX = 32.7996897
+				targetY = 35.0517956
 			targetX = float(targetX)
 			targetY = float(targetY)
 			dLon = (targetY-meY)
@@ -71,19 +73,12 @@ class commander( ):
 			brng 	=	math.degrees(brng)
 			brng	=	(brng + 360) % 360
 			brng	=	360	-	brng
-
 			magnometer = Magn()
 			radians = math.atan2(targetY - meY , targetX - meX)
 			degree = math.degrees(radians- 0.24) 
 			degree = brng 
 			mag =magnometer.getNorthDegree()
-
 			target = (360 - mag  + degree) % 360
-		
-			print "d : %f "%degree 
-			print "m : %f "%mag
-			print "r : %f "%radians
-			print "t : %f "%target
 			degree  = "12" 
 			m = 10 
 			screen  = turtle.Screen()

@@ -61,9 +61,4 @@ class RedisTools():
             print   i,   self.lpop(PULS)
 
 
-
-r = RedisTools()
-
-r.pipeLpush("G","0.0.0")
-print r.lpop("G")
     

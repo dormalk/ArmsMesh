@@ -3,7 +3,7 @@ import time
 from sys import argv
 import serial
 import pynmea2
-
+#import accl
 class GPS:
     def __init__(self):
 		self.ser = serial.Serial("/dev/ttyAMA0",9600, timeout = 0.5)
@@ -26,9 +26,12 @@ class GPS:
 
 class ACC:
     def __init__(self):
-        self.x = 1.12
-        self.y = 3.12
-        self.z = 5.00
+#        r = accl.accl()
+ #       x,y,z = r.get_accl()
+        self.x = 12.5
+        self.y = 54.23
+        self.z = 1440
+    
 
     def collect(self):
         value = 'A:'

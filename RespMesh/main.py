@@ -45,13 +45,16 @@ def main():
                                         
         t = threading.Thread(name = 'rfbridge',target=bridge.begin)
         t.start()
-        time.sleep(2)
+        bridge.set_nodeid(conf.node_id)
+
+        time.sleep(10)
+        bridge.set_nodeid(conf.node_id)
+        time.sleep(10)
         if conf.node_id %3 == 0 :
                                comand = commander()
-                               s= threading.Thread(name = 'commaderScreen',target=comand.start(1))
+                               s= threading.Thread(name = 'commaderScreen',target=comand.start(8))
+                               s.start()
 
-        #s.start()
-        bridge.set_nodeid(conf.node_id)
         run()
 
 if __name__ == "__main__":
