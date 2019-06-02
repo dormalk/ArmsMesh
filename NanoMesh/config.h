@@ -4,6 +4,7 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 #include "msgQueue.h"
+#include "string.h"
 void(* resetFunc) (void) = 0; //declare reset function @ address 0
 
 #include <SPI.h>
@@ -20,18 +21,18 @@ void(* resetFunc) (void) = 0; //declare reset function @ address 0
 #define MASSEGE_SIZE 22
 
 RF24 radio (7,8);
-int NodeId = 7;
+int NodeId  = 999;
 
 typedef struct payload{
   uint32_t Msg_Id;
   uint8_t src;
   uint8_t dest;
-  char data[MASSEGE_SIZE];
+  char data[MASSEGE_SIZE];  
 }payload_t;
 
 
 byte addresses[][6] = {"00001"};
-
+bool rx_audio = false;
 
 uint64_t testTimer = 0;
 

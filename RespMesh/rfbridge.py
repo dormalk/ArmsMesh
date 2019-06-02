@@ -2,7 +2,7 @@ import serial
 import sys
 import os
 import time
-import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library  
+#import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library  
 import platform
 from Message import Message
 from audio import AudioHendler
@@ -19,9 +19,9 @@ class RFBridge:
         def __init__(self,nodeid,redisTool):
                 self.nodeid = nodeid
                 self.redisTool = redisTool
-                GPIO.setwarnings(False) # Ignore warning for now
-                GPIO.setmode(GPIO.BOARD) # Use physical pin numbering
-                GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+                #GPIO.setwarnings(False) # Ignore warning for now
+                #GPIO.setmode(GPIO.BOARD) # Use physical pin numbering
+                #GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
                 self.isAduioRX = False
                 self.isAudioTX = False
                 self.count = 0
@@ -34,7 +34,7 @@ class RFBridge:
                                 time.sleep(1)
 		
 	def begin(self):
-                GPIO.add_event_detect(13,GPIO.RISING,callback=self.onClickRecord) # Setup event on pin 12 rising edge
+                #GPIO.add_event_detect(13,GPIO.RISING,callback=self.onClickRecord) # Setup event on pin 12 rising edge
 
                 while True:
                                 try:

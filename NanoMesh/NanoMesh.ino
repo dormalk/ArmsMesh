@@ -3,6 +3,7 @@
 void reciveMessage();
 void sendMessage(payload_t payload);
 void testFunction();
+void createAllAudio();
 
 void setup() {
   // put your setup code here, to run once:
@@ -11,8 +12,10 @@ void setup() {
   Serial.println("<START>");
   radio.openReadingPipe(1,addresses[0]);
   radio.openWritingPipe(addresses[0]); 
-  radio.startListening();
-};
+  radio.setPALevel(RF24_PA_MAX);
+  radio.setDataRate(RF24_2MBPS);
+  radio.startListening();  
+}
 
 void loop() {
   // put your main code here, to run repeatedly:
@@ -37,23 +40,43 @@ void loop() {
         Serial.print("<CHANGE_ID> ");
         Serial.println(NodeId);
     }
-  
+    if (command == "<AUDIO>"){
+        Serial.println("<OK?>");
+        createAllAudio();
+    }
+    if (command == "<END AUDIO>"){
+        rx_audio = false;
+    }
   }
-  testFunction();
-  delay(100);
+  //testFunction();
+//  delay(100);
 };
 
-
+void createAllAudio(){
+  static int id = 1;
+  payload_t payloadAudio;
+  for(int i = 0; i < 240; i++){
+        while(!(Serial.available()>0)){}
+        Serial.readBytes(payloadAudio.data,22);
+        payloadAudio.Msg_Id = id++;
+        payloadAudio.dest = -1;
+        payloadAudio.src = NodeId;
+        sendMessage(payloadAudio);
+        payloadAudio.data[21] = '\n';
+        if(strstr(payloadAudio.data,"REC") != NULL) {
+          for(int i = 0; i < 9; i++)
+            sendMessage(payloadAudio);
+         break;
+        }
+//        delay(100);
+  }
+}
 void reciveMessage(){
   payload_t payload;
   radio.read(&payload,sizeof(payload_t));
-  Serial.println(payload.Msg_Id);
-Serial.println(payload.dest);
-Serial.println(payload.src);
-
   if(!msgIdQueue.isExist(payload.Msg_Id)){
-    msgIdQueue.enQueue(payload.Msg_Id);    
-    if(payload.dest%3 == 0 && payload.src != NodeId && NodeId%3 == 0){                                 //If it's for me - insert to PI
+    msgIdQueue.enQueue(payload.Msg_Id);
+    if(payload.dest != 255 && payload.dest%10 == 0 && payload.src != NodeId && NodeId%10 == 0){                                 //If it's for me - insert to PI
       Serial.print("<NEW_MSG>,");
       Serial.print("<MSG_ID> ");
       Serial.print(payload.Msg_Id);
@@ -63,28 +86,45 @@ Serial.println(payload.src);
       Serial.print(payload.data);
       Serial.println(",<END_MSG>");    
     }
-    else{                                             //If not - check if I allready get it - if no, broadcast the message again
-      radio.stopListening();
-      delay(100);
-      radio.write(&payload,sizeof(payload_t),1);
-      delay(100);
-      radio.startListening();
+    else if(payload.src != NodeId){                                             //If not - check if I allready get it - if no, broadcast the message again
+      if (payload.dest == 255){                       //if it audio
+        rx_audio = true;
+        //Serial.println("<NEW_AUDIO>");
+        //Serial.print("<MSG_ID>");
+        //Serial.println(payload.Msg_Id);
+        //Serial.print("<SRC>");
+        //Serial.println(payload.src);
+        //Serial.print("<DEST>");
+        //Serial.println(payload.dest);
+        Serial.println("<AUDIO_DATA>");
+        Serial.write(payload.data,22);
+        //Serial.println("<END_NEW_AUDIO>");
+      }
+      if(!rx_audio){
+        radio.stopListening();
+        radio.write(&payload,sizeof(payload_t),1);
+        //delay(100);
+        radio.startListening();        
+      }
     }
   }
 };
 
 void sendMessage(payload_t payload){
   if(payload.dest != NodeId){
-    radio.stopListening();
-    delay(100);
-    radio.write(&payload,sizeof(payload_t),1);
-    delay(100);
-    radio.startListening();  
+    if(!rx_audio){
+      radio.stopListening();
+      //delay(100);
+      radio.write(&payload,sizeof(payload_t));
+      //delay(100);
+      radio.startListening();  
+    }
   }
 };
 
+
 int msgId = 0;
-int count = 0;
+
 void testFunction(){
   if(millis()-testTimer > 1000){
     testTimer = millis();
@@ -92,15 +132,7 @@ void testFunction(){
     payload.Msg_Id = msgId++;
     payload.src = NodeId;
     payload.dest = 0;
-    if(count%4 == 0)
-      strcpy(payload.data,"G:34.12245:32.15375");
-    if(count%4 == 1)
-      strcpy(payload.data,"P:120");
-    if(count%4 == 2)
-      strcpy(payload.data,"A:12.23,23.21,2.0");
-    if(count%4 == 3)
-      strcpy(payload.data,"F:False");
-      count++;
+    strcpy(payload.data,"G:34.12245:32.15375");
     sendMessage(payload);
   }
-};
+}

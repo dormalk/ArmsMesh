@@ -27,8 +27,7 @@ bridge = RFBridge(conf.node_id,redisTool)
 #ziped.close()
 readSize = 22
 
-COM = '/dev/ttyUSB0'
-ser = serial.Serial(COM,115200,serial.EIGHTBITS,serial.PARITY_NONE, serial.STOPBITS_ONE)
+ser = serial.Serial('COM4',115200)
 
 
 t = threading.Thread(name = 'just',target=bridge.begin)
