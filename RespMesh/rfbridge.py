@@ -64,7 +64,8 @@ class RFBridge:
                                                         message.set_dest(src)
                                                         message.set_data(data)
                                                         if 'G' in data :
-                                                                self.redisTool.pipeLpush(message.get_dest()+"_G",message.get_data())        
+                                                                self.redisTool.pipeLpush(message.get_dest()+"_G",message.get_data())
+                                                                self.redisTool.pipeLpush("myList",message.get_dest())
                                                         if 'A' in data :
                                                                 self.redisTool.pipeLpush(message.get_dest()+"_A",message.get_data())
                                                         if 'E' in data :

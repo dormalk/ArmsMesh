@@ -52,11 +52,14 @@ class Magn():
 class commander( ):
 	def __init__(self):
 		print ""
-	def start(self ,nodeId):
+	def start(self ,node):
 		while True:
 			meX = 32.0729653
 			meY = 34.8072157
 			r = RedisTools()
+                        nodeId =node
+                        print "try"
+                        nodeId = r.lpop("myList")
 			if r.llen(str(nodeId) + "_G") > 0 :
 				data = str(r.lpop(str(nodeId) + "_G"))
 				G,targetX,targetY = data.split(':',3)
@@ -96,35 +99,36 @@ class commander( ):
 			trtl.goto(0,0)
 			trtl.left(270)
 			trtl.penup()
-			trtl.forward(270)
-			trtl.write("Name : Haifa |"+"Distance:217.2k | "+"x:"+str(targetX)+",y:"+str(targetY),align="center",font=("Arial",12,"normal"))
+			trtl.forward(100)
+			trtl.write("Node Id :"+ nodeId+" |"+"Distance:217.2k | "+"x:"+str(targetX)+",y:"+str(targetY),align="center",font=("Arial",12,"normal"))
 			trtl.setheading(0)
 			trtl.goto(0,0)
 			trtl.penup()
-			trtl.left(int(mag))
-			trtl.forward(230)
+			trtl.left(int(mag)+90)
+			trtl.forward(80)
 			toprint=str("N")
 			trtl.write(toprint,align="center",font=("Arial",18,"normal"))	
 
 			trtl.setheading(0)
 			trtl.goto(0,0)
+			trtl.left(90)
+
 			trtl.penup()
-			trtl.forward(270)
+			trtl.forward(100)
 			trtl.pendown()
 			trtl.penup()
 			trtl.write(str(degree),align="center",font=("Arial",22,"normal"))
 
 			trtl.setheading(0)
 			trtl.goto(0,0)
-			trtl.left(int(target))
+			trtl.left(int(target)+90)
 			trtl.pendown()
-			trtl.forward(150)
+			trtl.forward(70)
 			trtl.penup()
 			toprint=str((int(target)))
 			trtl.write(toprint,align="center",font=("Arial",18,"normal"))
 	
 
-			time.sleep(2)
 			trtl.ht()
 			trtl.clear()
 

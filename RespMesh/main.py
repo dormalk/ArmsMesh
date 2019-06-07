@@ -50,12 +50,13 @@ def main():
         time.sleep(10)
         bridge.set_nodeid(conf.node_id)
         time.sleep(10)
-        if conf.node_id %3 == 0 :
-                               comand = commander()
-                               s= threading.Thread(name = 'commaderScreen',target=comand.start(8))
-                               s.start()
-
-        run()
+        if conf.node_id %10 == 0 :
+                comand = commander()
+                s= threading.Thread(name = 'run',target=run)
+                s.start()
+                comand.start(8)
+        else:
+                run()
 
 if __name__ == "__main__":
         main()
