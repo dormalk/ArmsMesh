@@ -30,14 +30,17 @@ def run():
                 if delta > 3000:
                         timer = int(round(time.time() * 1000))
                         for sense in sensors:
-                                message = Message()
-                                message.set_data(sense.collect())
-                                message.set_dest(0)
-                                msg = message.get_message()
-                                #print msg
-                                bridge.write(msg)
-                                #Here push msg to redis
-                                time.sleep(1)
+                                try:
+                                        message = Message()
+                                        message.set_data(sense.collect())
+                                        message.set_dest(0)
+                                        msg = message.get_message()
+                                        print msg
+                                        bridge.write(msg)
+                                        #Here push msg to redis
+                                        time.sleep(1)
+                                except (ValueError) as e:
+                                        print e
 
 def main():
         print "Running..."
@@ -46,7 +49,6 @@ def main():
         time.sleep(2)
         bridge.set_nodeid(conf.node_id)
         run()
-
 if __name__ == "__main__":
         main()
 

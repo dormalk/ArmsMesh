@@ -99,16 +99,16 @@ class RFBridge:
                         self.ser.write(byte)
                         time.sleep(0.02)
                         while byte != "":
-                                byte = f.read(22)
-                                self.ser.write(byte)
-                                time.sleep(0.02)
+                            byte = f.read(22)
+                            self.ser.write(byte)
+                            time.sleep(0.02)
                         time.sleep(1)
                         self.isAudioTX = False
                         
         def recivedAudio(self):
                 self.isAduioRX = True
                 try:
-                        os.remove('./media/test.mp3')
+                        os.remove('/home/dor/Desktop/ArmsMesh/RespMesh/media/test.mp3')
                 except:
                         print "just error"
                 curr = 0
@@ -134,6 +134,6 @@ class RFBridge:
                                                 break
                 self.isAduioRX = False
                 #playsound("./media/test.mp3")
-                pi = "./media/test.mp3"
+                pi = "/home/dor/Desktop/ArmsMesh/RespMesh/media/test.mp3"
                 os.system("mpg123 "+pi)
                 time.sleep(1)
