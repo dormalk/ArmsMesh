@@ -110,7 +110,7 @@ class RFBridge:
                 self.transmitAudio()        
 
         def transmitAudio(self):
-                with open('./media/test.mp3','rb') as f:
+                with open('/home/dor/Desktop/ArmsMesh/RespMesh/media/test.mp3','rb') as f:
                         self.ser.writelines('<AUDIO>\n')
                         time.sleep(1)
                         byte = f.read(22)
@@ -126,12 +126,12 @@ class RFBridge:
         def recivedAudio(self):
                 self.isAduioRX = True
                 try:
-                        os.remove('./media/test.mp3')
+                        os.remove('/home/dor/Desktop/ArmsMesh/RespMesh/media/test.mp3')
                 except:
                         print "just error"
                 curr = 0
                 print "START"
-                with open('./media/test.mp3','ab') as f2:
+                with open('/home/dor/Desktop/ArmsMesh/RespMesh/media/test.mp3','ab') as f2:
                         while not (self.ser.in_waiting > 0):
                                 continue
                         f2.write(self.ser.read(22))
@@ -152,6 +152,6 @@ class RFBridge:
                                                 break
                 self.isAduioRX = False
                 #playsound("./media/test.mp3")
-                pi = "./media/test.mp3"
+                pi = "/home/dor/Desktop/ArmsMesh/RespMesh/media/test.mp3"
                 os.system("mpg123 "+pi)
                 time.sleep(1)

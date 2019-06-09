@@ -58,7 +58,7 @@ class commander( ):
 			meY = 34.8072157
 			r = RedisTools()
                         nodeId =node
-                        print "try"
+                        #print "try"
                         nodeId = r.lpop("myList")
 			if r.llen(str(nodeId) + "_G") > 0 :
 				data = str(r.lpop(str(nodeId) + "_G"))
@@ -100,7 +100,7 @@ class commander( ):
 			trtl.left(270)
 			trtl.penup()
 			trtl.forward(100)
-			trtl.write("Node Id :"+ nodeId+" |"+"Distance:217.2k | "+"x:"+str(targetX)+",y:"+str(targetY),align="center",font=("Arial",12,"normal"))
+			trtl.write("Node Id :"+ str(nodeId) +" |"+"Distance:217.2k | "+"x:"+str(targetX)+",y:"+str(targetY),align="center",font=("Arial",12,"normal"))
 			trtl.setheading(0)
 			trtl.goto(0,0)
 			trtl.penup()
