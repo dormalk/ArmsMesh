@@ -87,7 +87,7 @@ class commander( ):
 			screen  = turtle.Screen()
 			trtl = turtle.Turtle()
 
-			trtl.speed(10)
+			trtl.speed(500)
 			screen.setup(620,620)
 			screen.bgcolor('black')
 			clr = ['red','green','blue','yellow','purple']
@@ -130,6 +130,7 @@ class commander( ):
 	
 
 			trtl.ht()
+			time.sleep(4)
 			trtl.clear()
 
 

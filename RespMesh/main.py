@@ -30,15 +30,18 @@ def run():
                 if delta > 3000:
                         timer = int(round(time.time() * 1000))
                         for sense in sensors:
-                                message = Message()
-                                message.set_data(sense.collect())
-                                message.set_dest(0)
-                                msg = message.get_message()
-                                print msg
-                                bridge.write(msg)
-                                time.sleep(1)
-                                #Here push msg to redis
-                                time.sleep(1)
+                                try:
+                                        message = Message()
+                                        message.set_data(sense.collect())
+                                        message.set_dest(0)
+                                        msg = message.get_message()
+                                        #print msg
+                                        bridge.write(msg)
+                                        #Here push msg to redis
+                                        time.sleep(0.5)
+                                except (ValueError) as e:
+                                        #print e
+                                        time.sleep(0.5)
                                 
 def main():
         print "Running..."

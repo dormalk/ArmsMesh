@@ -40,7 +40,7 @@ class RFBridge:
                                 try:
                                         if(self.ser.in_waiting > 0):
                                                 line = self.read()
-                                                print line
+                                                #print line
                                                         #line is 1 line from the recived message and not all the message
                                                         #here we need to check which tag we read and build full message and push it to redis
                                                         #we can be sure that the message is for current RespB coz arduino handle this issue
@@ -50,7 +50,7 @@ class RFBridge:
                                                 if '<NEW_MSG>' in line:
                                                         line = line.replace(' ', '_')
                                                         newMes,msgId,src,data,end= line.split(',', 5)
-                                                        print "MessageID :" +msgId   
+                                                        #print "MessageID :" +msgId   
 
                                                         toTrash1,toTrash,msgId = msgId.split('_',3)
                                                         toTrash,src = src.split('_',2)
@@ -129,20 +129,22 @@ class RFBridge:
                         os.remove('/home/dor/Desktop/ArmsMesh/RespMesh/media/test.mp3')
                 except:
                         print "just error"
-                curr = 0
-                print "START"
+                print "START AUDIO"
                 with open('/home/dor/Desktop/ArmsMesh/RespMesh/media/test.mp3','ab') as f2:
+                        curr = time.time()
                         while not (self.ser.in_waiting > 0):
                                 continue
                         f2.write(self.ser.read(22))
                         while True:
                                 if(self.ser.in_waiting > 0):
                                         row = self.ser.readline()
-                                        print "first"+row
+                                        #print "first"+row
                                         if "<AUDIO_DATA>" in row:
                                                 curr = time.time()
                                                 row = self.ser.read(22)
-                                                print "sec"+row
+                                                #print curr
+                                                #print '------------------------------------------------------'
+                                                #print '------------------------------------------------------'
                                                 if "REC" in row:
                                                         self.ser.write("<END_AUDIO>")
                                                         break
@@ -150,6 +152,10 @@ class RFBridge:
                                         if "<DATA>" in row:
                                                 self.ser.write("<END_AUDIO>")
                                                 break
+                                elif time.time() - curr > 3:
+                                        break
+                                
+                print "END AUDIO"
                 self.isAduioRX = False
                 #playsound("./media/test.mp3")
                 pi = "/home/dor/Desktop/ArmsMesh/RespMesh/media/test.mp3"

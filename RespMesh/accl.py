@@ -8,7 +8,6 @@ class accl():
 		print "accl init"
 	def get_accl(self): 
 	# Get I2C bus
-
 		bus = smbus.SMBus(1)
 		bus.write_byte_data(0x6b, 0x23, 0x30)
 		bus.write_byte_data(0x6b, 0x20, 0x67)
@@ -36,10 +35,8 @@ class accl():
 		zAccl = data1 * 256 + data0
 		if zAccl > 32767 :
 			zAccl -= 65536
-		print xAccl ,yAccl ,zAccl
+		
 		return xAccl ,yAccl ,zAccl
-
-
 
 
 
