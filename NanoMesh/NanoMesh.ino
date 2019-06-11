@@ -48,7 +48,7 @@ void loop() {
         rx_audio = false;
     }
   }
-  //testFunction();
+  testFunction();
 //  delay(100);
 };
 
@@ -64,7 +64,7 @@ void createAllAudio(){
         sendMessage(payloadAudio);
         payloadAudio.data[21] = '\n';
         if(strstr(payloadAudio.data,"REC") != NULL) {
-          for(int i = 0; i < 9; i++)
+          for(int i = 0; i < 15; i++)
             sendMessage(payloadAudio);
          break;
         }
@@ -115,6 +115,7 @@ void sendMessage(payload_t payload){
     if(!rx_audio){
       radio.stopListening();
       //delay(100);
+      Serial.print(payload.dest);
       radio.write(&payload,sizeof(payload_t));
       //delay(100);
       radio.startListening();  
@@ -125,14 +126,29 @@ void sendMessage(payload_t payload){
 
 int msgId = 0;
 
+int count = 0;
+
+const char* gps[6] = {"G:34.12245:34.15375","G:34.12345:34.15375","G:34.13245:34.15375","G:34.14245:34.15375","G:34.15245:34.15375","G:34.16245:34.15375"};
+const char* puls[7] = {"P:98","P:80","P:120","P:89","P:85","P:80","P:100"};
+
 void testFunction(){
   if(millis()-testTimer > 1000){
+    Serial.println(NodeId);
     testTimer = millis();
     payload_t payload;
     payload.Msg_Id = msgId++;
     payload.src = NodeId;
     payload.dest = 0;
-    strcpy(payload.data,"G:34.12245:32.15375");
+    if(count%4 == 0)
+      strcpy(payload.data,gps[count%6]);
+    if(count%4 == 1)
+      strcpy(payload.data,"A:12.12:13.12:15.15");
+    if(count%4 == 2)
+      strcpy(payload.data,"E:False");
+    if(count%4 == 3)
+      strcpy(payload.data,puls[count%7]);
+    Serial.println(payload.data);
+    count++;
     sendMessage(payload);
   }
 }
