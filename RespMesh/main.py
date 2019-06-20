@@ -5,7 +5,7 @@ import platform
 from Message import Message
 from redisConnection import RedisTools
 from config import Config
-from gyro import commander
+from demo import commander
 
 if platform.system() == 'Windows':
         from sensorTest import GPS,ACC,PULSE,EMARG
@@ -57,7 +57,7 @@ def main():
                 comand = commander()
                 s= threading.Thread(name = 'run',target=run)
                 s.start()
-                comand.start(8)
+                comand.start(conf.node_id)
         else:
                 run()
 

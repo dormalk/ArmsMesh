@@ -69,7 +69,8 @@ class RFBridge:
                                                         if 'A' in data :
                                                                 self.redisTool.pipeLpush(message.get_dest()+"_A",message.get_data())
                                                         if 'E' in data :
-                                                                self.redisTool.pipeLpush(message.get_dest()+"_E",message.get_data())
+                                                                if 'True' in data:
+                                                                        self.redisTool.pipeLpush(message.get_dest()+"_E",message.get_data())
                                                         if 'P' in data :
                                                                 self.redisTool.pipeLpush(message.get_dest()+ "_P",message.get_data())
                                                         self.redisTool.pipeLpush(message.get_dest(),message.get_message())
@@ -105,6 +106,7 @@ class RFBridge:
                 self.ser.writelines('<SET_NODE_ID>'+'\n'+str(nodeid)+'\n')
 
         def onClickRecord(self,channel):
+                print 'CLICK'
                 self.isAudioTX = True
                 aud.record()
                 self.transmitAudio()        
@@ -120,8 +122,9 @@ class RFBridge:
                                 byte = f.read(22)
                                 self.ser.write(byte)
                                 time.sleep(0.02)
-                        time.sleep(1)
                         self.isAudioTX = False
+                        time.sleep(1)
+
                         
         def recivedAudio(self):
                 self.isAduioRX = True
@@ -149,10 +152,10 @@ class RFBridge:
                                                         self.ser.write("<END_AUDIO>")
                                                         break
                                                 f2.write(row)
-                                        if "<DATA>" in row:
-                                                self.ser.write("<END_AUDIO>")
-                                                break
-                                elif time.time() - curr > 3:
+                                        #if "<DATA>" in row:
+                                                #self.ser.write("<END_AUDIO>")
+                                                #break
+                                elif time.time() - curr > 2:
                                         break
                                 
                 print "END AUDIO"

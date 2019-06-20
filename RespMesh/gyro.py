@@ -54,8 +54,8 @@ class commander( ):
 		print ""
 	def start(self ,node):
 		while True:
-			meX = 32.0729653
-			meY = 34.8072157
+			meX = 32.091290
+			meY = 34.804271
 			r = RedisTools()
                         nodeId =node
                         #print "try"
@@ -64,30 +64,33 @@ class commander( ):
 				data = str(r.lpop(str(nodeId) + "_G"))
 				G,targetX,targetY = data.split(':',3)
 			else :			
-				targetX = 32.7996897
-				targetY = 35.0517956
+				targetX = 32.0722100
+				targetY = 34.8274700
+				nodeId = 9
 			targetX = float(targetX)
 			targetY = float(targetY)
-			dLon = (targetY-meY)
-			y	=	math.sin(dLon)	*	math.cos(targetX)
-			x	=	math.cos(meX)	*	math.sin(targetY)	-	math.sin(meX)	*	math.cos(targetY)	*	math.cos(dLon)
+			#dLon = (targetY-meY)
+			#y	=	math.sin(dLon)	*	math.cos(targetX)
+			#x	=	math.cos(meX)	*	math.sin(targetY)	-	math.sin(meX)	*	math.cos(targetY)	*	math.cos(dLon)
 
-			brng	=	math.atan2(y,x)
-			brng 	=	math.degrees(brng)
-			brng	=	(brng + 360) % 360
-			brng	=	360	-	brng
+			#brng	=	math.atan2(y,x)
+			#brng 	=	math.degrees(brng)
+			#brng	=	(brng + 360) % 360
+			#brng	=	360	-	brng
 			magnometer = Magn()
 			radians = math.atan2(targetY - meY , targetX - meX)
-			degree = math.degrees(radians- 0.24) 
-			degree = brng 
+			degree = math.degrees(radians) 
+			#degree = brng 
 			mag =magnometer.getNorthDegree()
+			print degree
 			target = (360 - mag  + degree) % 360
+			
 			degree  = "12" 
 			m = 10 
 			screen  = turtle.Screen()
 			trtl = turtle.Turtle()
 
-			trtl.speed(500)
+			trtl.speed(0)
 			screen.setup(620,620)
 			screen.bgcolor('black')
 			clr = ['red','green','blue','yellow','purple']
@@ -100,7 +103,20 @@ class commander( ):
 			trtl.left(270)
 			trtl.penup()
 			trtl.forward(100)
-			trtl.write("Node Id :"+ str(nodeId) +" |"+"Distance:217.2k | "+"x:"+str(targetX)+",y:"+str(targetY),align="center",font=("Arial",12,"normal"))
+
+                                                #CAlculate distanse
+			R = 6373.0
+			lat1 = math.radians(meX)
+			lon1 = math.radians(meY)
+			lat2 = math.radians(targetX)
+			lon2 = math.radians(targetY)
+			dlon = lon2-lon1
+			dlat = lat2-lat1
+			a = math.sin(dlat/2)**2+math.cos(lat1)*math.cos(lat2)+math.sin(dlon/2)**2
+			c = 2*math.atan2(math.sqrt(a),math.sqrt(1-a))
+			distance = R*c
+                			
+			trtl.write("Node Id :"+ str(nodeId) +" | 0.5Km | "+"x:"+str(targetX)+",y:"+str(targetY),align="center",font=("Arial",12,"normal"))
 			trtl.setheading(0)
 			trtl.goto(0,0)
 			trtl.penup()
@@ -121,7 +137,7 @@ class commander( ):
 
 			trtl.setheading(0)
 			trtl.goto(0,0)
-			trtl.left(int(target)+90)
+			trtl.right(int(target)+270)
 			trtl.pendown()
 			trtl.forward(70)
 			trtl.penup()
