@@ -104,10 +104,10 @@ Near real time.
 <!-- GETTING STARTED -->
 ## Problem Description and Motivation
 
- * IDF communication by means of a radio transmitter allows the enemy to easily discover a task force and give the enemy a significant advantage in the time of any operation.
- * In an apocalyptic scenario in which the IDF communication network collapses - there is no proper backup or alternative ways to properly communicate between forces on the ground.
- * There isn’t an effective and qualitative way to send and receive messages from/to every soldier in the task force on an individual level. 
- * Only the soldier in the task force that is carrying the radio has that capability, meaning:
+* IDF communication by means of a radio transmitter allows the enemy to easily discover a task force and give the enemy a significant advantage in the time of any operation.
+* In an apocalyptic scenario in which the IDF communication network collapses - there is no proper backup or alternative ways to properly communicate between forces on the ground.
+* There isn’t an effective and qualitative way to send and receive messages from/to every soldier in the task force on an individual level. 
+* Only the soldier in the task force that is carrying the radio has that capability, meaning:
   * In the event that the solder that is carrying the radio is injured or killed - the force may lose the means to communicate for a long time.
   * If another soldier in the force has to send or recieve a message he must turn to the soldier that has the radio transmitter - sometimes the reaction time is critical in the transmission of messages in the field.
   * The IDF today doesn’t have the ability to monitor in real time the status(location and distress) of each individual solder, making  it a hard decision in unforeseen events such as: shooting at a force, abducting soldiers, cross fire and sending a medic to the wounded soldiers.
