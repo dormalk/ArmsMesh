@@ -73,7 +73,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Overview
 
-![product-screenshot][product-screenshot1]
+![product-screenshot](https://i.imgur.com/fN4qlyf.png | height="150")
 ![product-screenshot][product-screenshot2]
 
 As of today there are several major challenges that the military is facing related to communication and connection of forces at the operational time in which soldiers are sent on a high risk combat operation and there is a need to coordinate and cooperate with other forces in the sector. <br/><br/>
