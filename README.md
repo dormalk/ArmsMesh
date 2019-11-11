@@ -134,10 +134,10 @@ The headquarters interface will be used to display the deployed forces in the fi
 <!-- CONTACT -->
 ## Contact
 
-Dor Malka - [dormalk@gmail.com](mailto:dormalk@gmail.com)
-Ben Raich - [Benrben4@gmail.com](mailto:Benrben4@gmail.com)
-Tal Chausho - [tal.cga@gmail.com](mailto:tal.cga@gmail.com)
-Igal Tsesis - [itsesisx@gmail.com](mailto:itsesisx@gmail.com)
+Dor Malka - [dormalk@gmail.com](mailto:dormalk@gmail.com) <br/>
+Ben Raich - [Benrben4@gmail.com](mailto:Benrben4@gmail.com) <br/>
+Tal Chausho - [tal.cga@gmail.com](mailto:tal.cga@gmail.com) <br/>
+Igal Tsesis - [itsesisx@gmail.com](mailto:itsesisx@gmail.com) <br/>
 Project Link: [https://github.com/dormalk/ArmsMesh](https://github.com/dormalk/ArmsMesh)
 
 
