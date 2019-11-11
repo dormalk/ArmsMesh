@@ -64,6 +64,7 @@
 * [Problem Description and Motivation](#Problem-description-and-motivation)
 * [Project Goals](#project-goals)
 * [Acknowledgements](#acknowledgements)
+* [The Approach](#the-approach)
 <!--* [Contributing](#contributing)
 * [Roadmap](#roadmap)
 * [License](#license)-->
@@ -120,8 +121,16 @@ Near real time.
   * Enable monitoring of every soldier and his condition in the field.
   * To provide the ability to transmit messages in field while maintaining “radio silence”. 
 
-### Installation
+## The Approach
  
+Our approach to the solution is a system that will be implemented by a dynamic mesh network that does not depend on the current military network systems and will constitute an easy stand-alone network to operate and maintain that will provide a secure means of communication and data transmission in addition to the existing means of communication in the military. <br/><br/>
+
+The systems infrastructure will support the following:
+* Sending and receiving voice messages.
+* Wearable Mesh component on the soldier that includes sensors that will sample and monitor essential information such as heartbeat and location.<br/>
+
+The data transmitted on the mesh network will be stored in a database - accessible by the headquarters interface.
+The headquarters interface will be used to display the deployed forces in the field together with NRT data that is transmitted over the mesh network; In addition, the interface will automatically alert to a distress situation received and will provide information in order to assess the event.
 1. Clone the repo
 ```sh
 git clone https://github.com/dormalk/Nursing-App
@@ -230,11 +239,5 @@ Project Goals
 
 The Approach
 
-Our approach to the solution is a system that will be implemented by a dynamic mesh network that does not depend on the current military network systems and will constitute an easy stand-alone network to operate and maintain that will provide a secure means of communication and data transmission in addition to the existing means of communication in the military. 
 
-The systems infrastructure will support the following:
-Sending and receiving voice messages.
-Wearable Mesh component on the soldier that includes sensors that will sample and monitor essential information such as heartbeat and location.
-The data transmitted on the mesh network will be stored in a database - accessible by the headquarters interface.
-The headquarters interface will be used to display the deployed forces in the field together with NRT data that is transmitted over the mesh network; In addition, the interface will automatically alert to a distress situation received and will provide information in order to assess the event.
 # ArmsMesh
