@@ -85,7 +85,7 @@ A communication network in which each soldier has the ability to receive message
 To equip each soldier with location and pulse sensors - collect vitals and transmit the information to the headquarters.
 Of course, all of these goals will be implemented alongside additional requirements that are in the army today such as: information security, durability and more.
 
-### Glossary
+## Glossary
 
 ##### Mesh Network
 A network topology in which each node on the network is both an information source from which data can be obtained and as a route through which they can pass messages to his neighbor nodes.  In the event of a hardware failure, many routes are available to continue the network communication process.
