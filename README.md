@@ -35,7 +35,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/dormalk/ArmsMesh">
-    <img src="https://i.imgur.com/UdbswpM.png" alt="logo" width="150" height="150"/>
+    <img src="https://i.imgur.com/UdbswpM.png" alt="logo" height="150"/>
   </a>
   <h3 align="center">Arms Mesh</h3>
 
@@ -72,8 +72,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Overview
-<img src="https://i.imgur.com/fN4qlyf.png " height="150">
-![product-screenshot][product-screenshot2]
+<img src="https://i.imgur.com/fN4qlyf.png " height="250">
+<img src="https://i.imgur.com/RaMElMP.png " height="250">
 
 As of today there are several major challenges that the military is facing related to communication and connection of forces at the operational time in which soldiers are sent on a high risk combat operation and there is a need to coordinate and cooperate with other forces in the sector. <br/><br/>
 An infantry task force usually has up to a dozen soldiers - only one of whom has a communication device and is the only one who can transmit and receive transmissions from other forces.
@@ -167,5 +167,4 @@ Project Link: [https://github.com/dormalk/ArmsMesh](https://github.com/dormalk/A
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/dor-malka-444b94116/
 [product-screenshot1]: https://i.imgur.com/fN4qlyf.png
-[product-screenshot2]: https://i.imgur.com/RaMElMP.png
 
