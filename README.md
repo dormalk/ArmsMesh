@@ -60,7 +60,7 @@
 
 * [Overview](#overview)
 * [Glossary](#glossary)
-* [Problem Description and Motivation](#Problem-description-and-motivation)
+* [Problem Description and Motivation](#problem-description-and-motivation)
 * [Project Goals](#project-goals)
 * [Acknowledgements](#acknowledgements)
 * [The Approach](#the-approach)
@@ -72,8 +72,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Overview
-<img src="https://i.imgur.com/fN4qlyf.png" height="250"/>
-<img src="https://i.imgur.com/RaMElMP.png" height="250"/>
+<img src="https://i.imgur.com/fN4qlyf.png" height="250"> <img src="https://i.imgur.com/RaMElMP.png" height="250">
+
 
 As of today there are several major challenges that the military is facing related to communication and connection of forces at the operational time in which soldiers are sent on a high risk combat operation and there is a need to coordinate and cooperate with other forces in the sector. <br/><br/>
 An infantry task force usually has up to a dozen soldiers - only one of whom has a communication device and is the only one who can transmit and receive transmissions from other forces.
