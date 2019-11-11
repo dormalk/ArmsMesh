@@ -35,9 +35,8 @@
 <br />
 <p align="center">
   <a href="https://github.com/dormalk/ArmsMesh">
-    <img src="https://i.imgur.com/nPyBg1T.png" alt="logo" width="150" height="150"/>
+    <img src="https://i.imgur.com/UdbswpM.png" alt="logo" width="150" height="150"/>
   </a>
-
   <h3 align="center">Arms Mesh</h3>
 
   <p align="center">
@@ -46,7 +45,7 @@
     <a href="https://github.com/dormalk/ArmsMesh"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://young-fjord-54178.herokuapp.com/" target="_blank">Open ArmsMesh on Google One</a>
+    <a href="https://drive.google.com/open?id=1gEH-2Ct-r3r2Eb7IMejEUaathYRAJ1e8" target="_blank">Open ArmsMesh on Google One</a>
     ·
     <a href="https://github.com/dormalk/ArmsMesh/issues">Report Bug</a>
     ·
@@ -75,6 +74,7 @@
 ## Overview
 
 ![product-screenshot][product-screenshot1]
+![product-screenshot][product-screenshot2]
 
 As of today there are several major challenges that the military is facing related to communication and connection of forces at the operational time in which soldiers are sent on a high risk combat operation and there is a need to coordinate and cooperate with other forces in the sector. <br/><br/>
 An infantry task force usually has up to a dozen soldiers - only one of whom has a communication device and is the only one who can transmit and receive transmissions from other forces.
@@ -131,64 +131,14 @@ The systems infrastructure will support the following:
 
 The data transmitted on the mesh network will be stored in a database - accessible by the headquarters interface.
 The headquarters interface will be used to display the deployed forces in the field together with NRT data that is transmitted over the mesh network; In addition, the interface will automatically alert to a distress situation received and will provide information in order to assess the event.
-1. Clone the repo
-```sh
-git clone https://github.com/dormalk/Nursing-App
-```
-2. Install NPM packages
-```sh
-npm install
-```
-3. Run app from CMD
-```sh
-npm start
-```
-4. Follow the instruction on the opened web page
-```sh
-http://localhost:3000
-```
-
-<!-- USAGE EXAMPLES -->
-## Usage
-  - View contacts linked to REST
-  - Search for your contact 
-  - <a href="https://young-fjord-54178.herokuapp.com/" target="_blank">Link to ArmsMesh Project on Google One</a>
-<!--_For more examples, please refer to the [Documentation](https://example.com)_-->
-
-
-
-<!-- ROADMAP -->
-<!--## Roadmap
-
-See the [open issues](https://github.com/dormalk/ArmsMesh/issues) for a list of proposed features (and known issues).
-
-
-
-CONTRIBUTING
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
--->
-
-<!-- LICENSE
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
--->
 
 <!-- CONTACT -->
 ## Contact
 
 Dor Malka - [dormalk@gmail.com](mailto:dormalk@gmail.com)
-
+Ben Raich - [Benrben4@gmail.com](mailto:Benrben4@gmail.com)
+Tal Chausho - [tal.cga@gmail.com](mailto:tal.cga@gmail.com)
+Igal Tsesis - [itsesisx@gmail.com](mailto:itsesisx@gmail.com)
 Project Link: [https://github.com/dormalk/ArmsMesh](https://github.com/dormalk/ArmsMesh)
 
 
@@ -217,27 +167,6 @@ Project Link: [https://github.com/dormalk/ArmsMesh](https://github.com/dormalk/A
 [license-url]: https://github.com/dormalk/ArmsMesh/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/dor-malka-444b94116/
-[product-screenshot1]: https://i.imgur.com/gIoceuD.png
+[product-screenshot1]: https://i.imgur.com/fN4qlyf.png
+[product-screenshot2]: https://i.imgur.com/RaMElMP.png
 
-
-
-"# ArmsMesh" 
-=======
-
-
- Glossary
-
-
-
-Problem Description and Motivation
-
-
-
-Project Goals
-
-
-
-The Approach
-
-
-# ArmsMesh
