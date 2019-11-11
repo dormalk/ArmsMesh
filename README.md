@@ -112,12 +112,12 @@ If another soldier in the force has to send or recieve a message he must turn to
 The IDF today doesn’t have the ability to monitor in real time the status(location and distress) of each individual solder, making it a hard decision in unforeseen events such as: shooting at a force, abducting soldiers, cross fire and sending a medic to the wounded soldiers.<br/>
 
 ## Project Goals
-  *To provide an alternative communications system between task forces in the field in the event that military communication systems collapse.
-  *Enable inter-force communication.
-  *Communication that does not depend on a single soldier with a radio transmitter.
-  *Every soldier sends and receives messages within the task force.
-  *Enable monitoring of every soldier and his condition in the field.
-  *To provide the ability to transmit messages in field while maintaining “radio silence”. 
+  * To provide an alternative communications system between task forces in the field in the event that military communication systems collapse.
+  * Enable inter-force communication.
+  * Communication that does not depend on a single soldier with a radio transmitter.
+  * Every soldier sends and receives messages within the task force.
+  * Enable monitoring of every soldier and his condition in the field.
+  * To provide the ability to transmit messages in field while maintaining “radio silence”. 
 
 ### Installation
  
