@@ -89,15 +89,18 @@ Of course, all of these goals will be implemented alongside additional requireme
 
 ### Glossary
 
-Mesh Network - A network topology in which each node on the network is both an information source from which data can be obtained and as a route through which they can pass messages to his neighbor nodes.  In the event of a hardware failure, many routes are available to continue the network communication process.
-Mesh Device - A collection of hardware that is worn on the solder which is a node component within the meshnet.
-Node -- #not sure we need this#
-GUI -- #Not sure we need this either# 
-Sector - A general area agreed upon as a territory under the responsibility of a military entity.
-Task Force - All the military forces for which the message would be relevant to continue the execution of the operation (for example - a rescue message was sent - The message will be received at the headquarters, raising an alert to the clinic so they will be prepared to receive the wounded.
-Operational range - Range that is agreed upon by security officials and the ARMS project engineers as the best range for sending messages on the network.
-NRT - Near real time.
-
+# Mesh Network
+A network topology in which each node on the network is both an information source from which data can be obtained and as a route through which they can pass messages to his neighbor nodes.  In the event of a hardware failure, many routes are available to continue the network communication process.
+# Mesh Device
+A collection of hardware that is worn on the solder which is a node component within the meshnet.
+# Sector 
+A general area agreed upon as a territory under the responsibility of a military entity.<br/>
+# Task Force
+All the military forces for which the message would be relevant to continue the execution of the operation (for example - a rescue message was sent - The message will be received at the headquarters, raising an alert to the clinic so they will be prepared to receive the wounded.
+# Operational range 
+Range that is agreed upon by security officials and the ARMS project engineers as the best range for sending messages on the network.
+# NRT
+Near real time.
 
 
 <!-- GETTING STARTED -->
