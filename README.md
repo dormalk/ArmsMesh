@@ -60,8 +60,7 @@
 ## Table of Contents
 
 * [Overview](#overview)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
+* [Glossary](#glossary)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
@@ -78,13 +77,26 @@
 
 ![product-screenshot][product-screenshot1]
 
+As of today there are several major challenges that the military is facing related to communication and connection of forces at the operational time in which soldiers are sent on a high risk combat operation and there is a need to coordinate and cooperate with other forces in the sector. <br/><br/>
+An infantry task force usually has up to a dozen soldiers - only one of whom has a communication device and is the only one who can transmit and receive transmissions from other forces.
+A task force can’t always use the communication equipment, especially if there are suspicions that an enemy can locate a transmission and expose the force.
+Communication is the “Achilles heel” during combat, there is gunfire and a lot of noises, all the attention is focused on the fighting and it is difficult for the team command to make key decisions when he does not know the status of his force. 
+The primary goal for the ARMS project is to develop a communication system based on mesh network topology which enables:
+To create a stand-alone network that will not be related to any networks operating today, making it more difficult to discover and track down any transmission.
+A communication network in which each soldier has the ability to receive messages and send them to various entities.
+To equip each soldier with location and pulse sensors - collect vitals and transmit the information to the headquarters.
+Of course, all of these goals will be implemented alongside additional requirements that are in the army today such as: information security, durability and more.
 
-As of today there are several major challenges that the military is facing related to communication and connection of forces at the operational time in which soldiers are sent on a high risk combat operation and there is a need to coordinate and cooperate with other forces in the sector.
+### Glossary
 
-### Built With
-
-  * [React](https://reactjs.org/)
-  * [Bootstrap](https://getbootstrap.com/)
+Mesh Network - A network topology in which each node on the network is both an information source from which data can be obtained and as a route through which they can pass messages to his neighbor nodes.  In the event of a hardware failure, many routes are available to continue the network communication process.
+Mesh Device - A collection of hardware that is worn on the solder which is a node component within the meshnet.
+Node -- #not sure we need this#
+GUI -- #Not sure we need this either# 
+Sector - A general area agreed upon as a territory under the responsibility of a military entity.
+Task Force - All the military forces for which the message would be relevant to continue the execution of the operation (for example - a rescue message was sent - The message will be received at the headquarters, raising an alert to the clinic so they will be prepared to receive the wounded.
+Operational range - Range that is agreed upon by security officials and the ARMS project engineers as the best range for sending messages on the network.
+NRT - Near real time.
 
 
 
@@ -193,33 +205,11 @@ Project Link: [https://github.com/dormalk/ArmsMesh](https://github.com/dormalk/A
 
 "# ArmsMesh" 
 =======
-Overview
-
- 
-
-
-An infantry task force usually has up to a dozen soldiers - only one of whom has a communication device and is the only one who can transmit and receive transmissions from other forces.
-A task force can’t always use the communication equipment, especially if there are suspicions that an enemy can locate a transmission and expose the force.
-Communication is the “Achilles heel” during combat, there is gunfire and a lot of noises, all the attention is focused on the fighting and it is difficult for the team command to make key decisions when he does not know the status of his force. 
-The primary goal for the ARMS project is to develop a communication system based on mesh network topology which enables:
-To create a stand-alone network that will not be related to any networks operating today, making it more difficult to discover and track down any transmission.
-A communication network in which each soldier has the ability to receive messages and send them to various entities.
-To equip each soldier with location and pulse sensors - collect vitals and transmit the information to the headquarters.
-Of course, all of these goals will be implemented alongside additional requirements that are in the army today such as: information security, durability and more.
-
-
 
 
  Glossary
 
-Mesh Network - A network topology in which each node on the network is both an information source from which data can be obtained and as a route through which they can pass messages to his neighbor nodes.  In the event of a hardware failure, many routes are available to continue the network communication process.
-Mesh Device - A collection of hardware that is worn on the solder which is a node component within the meshnet.
-Node -- #not sure we need this#
-GUI -- #Not sure we need this either# 
-Sector - A general area agreed upon as a territory under the responsibility of a military entity.
-Task Force - All the military forces for which the message would be relevant to continue the execution of the operation (for example - a rescue message was sent - The message will be received at the headquarters, raising an alert to the clinic so they will be prepared to receive the wounded.
-Operational range - Range that is agreed upon by security officials and the ARMS project engineers as the best range for sending messages on the network.
-NRT - Near real time.
+
 
 Problem Description and Motivation
 
