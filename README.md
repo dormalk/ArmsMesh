@@ -59,7 +59,7 @@
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
-* [About the Project](#about-the-project)
+* [Overview](#overview)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
@@ -74,13 +74,12 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Overview
 
 ![product-screenshot][product-screenshot1]
 
 
-Are u breastfeeding your child? this app is for you!
-Tracking after the times and the final feeded breasts to make feeding effective!
+As of today there are several major challenges that the military is facing related to communication and connection of forces at the operational time in which soldiers are sent on a high risk combat operation and there is a need to coordinate and cooperate with other forces in the sector.
 
 ### Built With
 
@@ -196,7 +195,7 @@ Project Link: [https://github.com/dormalk/ArmsMesh](https://github.com/dormalk/A
 =======
 Overview
 
-As of today there are several major challenges that the military is facing related to communication and connection of forces at the operational time in which soldiers are sent on a high risk combat operation and there is a need to coordinate and cooperate with other forces in the sector. 
+ 
 
 
 An infantry task force usually has up to a dozen soldiers - only one of whom has a communication device and is the only one who can transmit and receive transmissions from other forces.
