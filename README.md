@@ -145,8 +145,10 @@ Project Link: [https://github.com/dormalk/ArmsMesh](https://github.com/dormalk/A
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-  * [React](https://reactjs.org/)
-  * [Bootstrap](https://getbootstrap.com/)
+  * [Wikipedia Mesh Network](https://en.wikipedia.org/wiki/Mesh_networking)
+  * [NRF-24 By TMRh20](https://www.arduinolibraries.info/libraries/rf24)
+  * [Arduino](https://www.arduino.cc/)
+  * [RaspberryPi](https://www.raspberrypi.org/)
 
 
 
